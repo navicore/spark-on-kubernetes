@@ -29,31 +29,47 @@ service "spark-master" created
 ```
 
 ```console
-$ kubectl create -f spark-ui-proxy-controller.yaml
-replicationcontroller "spark-ui-proxy-controller" created
-```
-
-for the kubernetes ui
-
-```console
-kubectl proxy --port=8001
-```
-
-for the spark ui
-
-```console
-kubectl port-forward spark-ui-proxy-controller-<POD-ID> 8080:80
-```
-
-```console
 $ kubectl create -f spark-worker-controller.yaml
 replicationcontroller "spark-worker-controller" created
 ```
 
 Done.
 
-* follow link: [kube ui](http://localhost:8001/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#/service?namespace=default)
-* follow link: [spark master ui](http://localhost:8080/proxy:spark-master:8080)
+... Unless you want access to the UIs.  In that case:
+
+```console
+$ kubectl create -f spark-ui-proxy-controller.yaml
+replicationcontroller "spark-ui-proxy-controller" created
+```
+
+```console
+$ kubectl create -f zeppelin-controller.yaml
+replicationcontroller "zeppelin-controller" created
+```
+
+Done.
+
+... Unless you also want to actually use the UIs.  In that case:
+
+for the kubernetes ui
+
+```console
+kubectl proxy --port=8001
+```
+and follow link: [kube ui](http://localhost:8001/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#/service?namespace=default)
+
+for the spark ui
+
+```console
+kubectl port-forward spark-ui-proxy-controller-<POD-ID> 8080:80
+```
+and follow link: [spark master ui](http://localhost:8080/proxy:spark-master:8080)
+
+for the zeppelin ui
+```console
+kubectl port-forward zeppelin-controller-sq7z5 8081:8080
+```
+and follow link: [zeppeline ui](http://localhost:8081)
 
 ## CHEAT
 
