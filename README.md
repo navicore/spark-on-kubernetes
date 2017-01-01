@@ -43,14 +43,14 @@ for the kubernetes ui
 ```console
 kubectl proxy --port=8001
 ```
-[kube ui](http://localhost:8001/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#/service?namespace=default)
+follow link: [kube ui](http://localhost:8001/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#/service?namespace=default)
 
 for the spark ui
 
 ```console
 kubectl port-forward spark-ui-proxy-controller-kg6an 8080:80
 ```
-[spark master ui](http://localhost:8080/proxy:spark-master:8080)
+follow link: [spark master ui](http://localhost:8080/proxy:spark-master:8080)
 
 ```console
 $ kubectl create -f spark-worker-controller.yaml
