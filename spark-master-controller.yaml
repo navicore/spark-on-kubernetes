@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: spark-master
-          image: navicore/spark
+          image: navicore/spark:1.6.2
           command: ["/start-master"]
           ports:
             - containerPort: 7077
