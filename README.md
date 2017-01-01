@@ -14,7 +14,7 @@ I presume you have your own working `kubectl` environment.
 
 * The k8s stuff is originally from [the k8s spark example](https://github.com/kubernetes/kubernetes/tree/master/examples/spark).
 * The Docker images are at https://github.com/navicore/spark based on https://github.com/kubernetes/application-images/tree/master/spark.
-* The Spark UI Proxy is taken from https://github.com/aseigneurin/spark-ui-proxy.
+* The Spark UI Proxy is https://github.com/aseigneurin/spark-ui-proxy.
 
 ## START HERE
 
