@@ -33,11 +33,6 @@ $ kubectl create -f spark-ui-proxy-controller.yaml
 replicationcontroller "spark-ui-proxy-controller" created
 ```
 
-```console
-$ kubectl create -f spark-ui-proxy-service.yaml
-service "spark-ui-proxy" created
-```
-
 for the kubernetes ui
 
 ```console
@@ -47,7 +42,7 @@ kubectl proxy --port=8001
 for the spark ui
 
 ```console
-kubectl port-forward spark-ui-proxy-controller-kg6an 8080:80
+kubectl port-forward spark-ui-proxy-controller-<POD-ID> 8080:80
 ```
 
 ```console
