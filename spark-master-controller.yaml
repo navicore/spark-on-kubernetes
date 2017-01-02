@@ -13,7 +13,11 @@ spec:
     spec:
       containers:
         - name: spark-master
-          image: navicore/spark:1.6.2
+          image: navicore/spark:1.6.2a
+          imagePullPolicy: Always
+          env:
+          - name: SPARK_SERVICE_NAME
+            value: "spark-master"
           command: ["/start-master"]
           ports:
             - containerPort: 7077

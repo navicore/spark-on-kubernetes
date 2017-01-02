@@ -13,11 +13,18 @@ spec:
     spec:
       containers:
         - name: spark-worker
-          image: navicore/spark:1.6.2
+          image: navicore/spark:1.6.2a
+          imagePullPolicy: Always
+          env:
+          - name: SPARK_WORKER_UI_PORT
+            value: "8082"
+          - name: SPARK_EXECUTOR_MEMORY
+            value: "1g"
+          - name: SPARK_SERVICE_NAME
+            value: "spark-master"
           command: ["/start-worker"]
           ports:
             - containerPort: 8081
           resources:
             requests:
               cpu: 100m
-
