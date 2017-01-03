@@ -3,39 +3,35 @@
 #
 # tool for generating customized clusters, ie name, replicas, memory, etc...
 #
+# 1- edit the PREFIX to create a unique spark cluster name
+# 2- ./gen_new_cluster.sh
+# 3- cd build && kubectl create -f .
+#
+
+PREFIX="my"
 
 mkdir -p build
 
-# echo "generating build/spark-ui-proxy-controller.yaml"
-# FN=spark-ui-proxy-controller.yaml
-# sed "s/spark-master/ed-spark-master/" ./${FN} \
-# | sed "s/: spark-ui-proxy/: ed-spark-ui-proxy/" \
-# > build/$FN
+FN=spark-ui-proxy-controller.yaml
+sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
+| sed "s/: spark-ui-proxy/: ${PREFIX}-spark-ui-proxy/" \
+> build/$FN
 
-
-echo "generating build/spark-master-service.yaml"
 FN=spark-master-service.yaml
-sed "s/spark-master/ed-spark-master/" ./${FN} \
+sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
 > build/$FN
 
-
-echo "generating build/spark-master-controller.yaml"
 FN=spark-master-controller.yaml
-sed "s/spark-master/ed-spark-master/" ./${FN} \
+sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
 > build/$FN
 
-
-echo "generating build/spark-worker-controller.yaml"
 FN=spark-worker-controller.yaml
-sed "s/spark-master/ed-spark-master/" ./${FN} \
-| sed "s/spark-worker/ed-spark-worker/" \
+sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
+| sed "s/spark-worker/${PREFIX}-spark-worker/" \
 > build/$FN
 
-
-echo "generating build/zeppelin-controller.yaml"
 FN=zeppelin-controller.yaml
-sed "s/spark-master/ed-spark-master/" ./${FN} \
-| sed "s/: zeppelin/: ed-zeppelin/" \
+sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
+| sed "s/: zeppelin/: ${PREFIX}-zeppelin/" \
 > build/$FN
-
 
