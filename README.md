@@ -77,3 +77,15 @@ don't look or think, just do `kubectl create -f .`
 
 -------
 
+## Customize
+
+use the `gen_new_cluster.sh` script to create new standalone spark clusters
+that can run safely within the same kubernetes subnet.  The script changes the
+name of the master used by the rest of the containers - no kube namespace used.
+
+```
+PREFIX="my-fav-cluster" ./gen_new_cluster.sEFIX="my" ./gen_new_cluster.sh
+```
+
+then `cd build``, edit the files some more for replica counts and port changes, and `kubectl create -f .`.
+

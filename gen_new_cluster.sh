@@ -8,7 +8,7 @@
 # 3- cd build && kubectl create -f .
 #
 
-PREFIX="my"
+PREFIX=${PREFIX:-my}
 
 mkdir -p build
 

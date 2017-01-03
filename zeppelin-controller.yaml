@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: zeppelin
-          image: navicore/zeppelin:0.6.2a
+          image: navicore/zeppelin:0.6.2b
           env:
           - name: SPARK_SERVICE_NAME
             value: "spark-master"
