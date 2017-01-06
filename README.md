@@ -71,6 +71,14 @@ Done.
   ```
   and follow link: [zeppeline ui](http://localhost:8081)
 
+## Submit a Job
+
+example from an sbt project with an assembly task
+
+```console
+sbt assembly && kubectl exec -i spark-master-controller-<ID> -- /bin/bash -c 'cat > my.jar && /opt/spark/bin/spark-submit --deploy-mode client --master spark://spark-master:7077 --class my.Main ./my.jar' < target/scala-2.10/*.jar
+```
+
 ## CHEAT
 
 don't look or think, just do `kubectl create -f .`
