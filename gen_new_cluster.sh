@@ -8,7 +8,9 @@
 # 3- cd build && kubectl create -f .
 #
 
-PREFIX=${PREFIX:-my}
+PREFIX=${PREFIX:-zytest}
+SPARK_IMAGE_REPO=${SPARK_IMAGE_REPO:-zzyin}
+SPARK_IMAGE_VERSION=${SPARK_IMAGE_VERSION:-latest}
 
 mkdir -p build
 
@@ -23,11 +25,15 @@ sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
 
 FN=spark-master-controller.yaml
 sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
+| sed "s/navicore/${SPARK_IMAGE_REPO}/" \
+| sed "s/1.6.2a/${SPARK_IMAGE_VERSION}/" \
 > build/$FN
 
 FN=spark-worker-controller.yaml
 sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
 | sed "s/spark-worker/${PREFIX}-spark-worker/" \
+| sed "s/navicore/${SPARK_IMAGE_REPO}/" \
+| sed "s/1.6.2a/${SPARK_IMAGE_VERSION}/" \
 > build/$FN
 
 FN=zeppelin-controller.yaml
