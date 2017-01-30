@@ -9,8 +9,9 @@
 #
 
 PREFIX=${PREFIX:-zytest}
-SPARK_IMAGE_REPO=${SPARK_IMAGE_REPO:-zzyin}
-SPARK_IMAGE_VERSION=${SPARK_IMAGE_VERSION:-latest}
+IMAGE_REPO=${IMAGE_REPO:-zzyin}
+IMAGE_NAME=${IMAGE_NAME:-spark}
+IMAGE_VERSION=${IMAGE_VERSION:-latest}
 
 mkdir -p build
 
@@ -25,15 +26,15 @@ sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
 
 FN=spark-master-controller.yaml
 sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
-| sed "s/navicore/${SPARK_IMAGE_REPO}/" \
-| sed "s/1.6.2a/${SPARK_IMAGE_VERSION}/" \
+| sed "s/navicore\/spark/${IMAGE_REPO}\/${IMAGE_NAME}/" \
+| sed "s/1.6.2a/${IMAGE_VERSION}/" \
 > build/$FN
 
 FN=spark-worker-controller.yaml
 sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
 | sed "s/spark-worker/${PREFIX}-spark-worker/" \
-| sed "s/navicore/${SPARK_IMAGE_REPO}/" \
-| sed "s/1.6.2a/${SPARK_IMAGE_VERSION}/" \
+| sed "s/navicore\/spark/${IMAGE_REPO}\/${IMAGE_NAME}/" \
+| sed "s/1.6.2a/${IMAGE_VERSION}/" \
 > build/$FN
 
 FN=zeppelin-controller.yaml
