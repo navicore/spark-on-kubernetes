@@ -1,0 +1,21 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: spark-application-controller
+spec:
+  replicas: 1
+  selector:
+    component: spark-application
+  template:
+    metadata:
+      labels:
+        component: spark-application
+    spec:
+      containers:
+        - name: spark-application
+          image: bitsdock/sparkdbtest:latest
+          imagePullPolicy: Always
+          env:
+          - name: SPARK_MASTER
+            value: "spark://spark-master:7077"
+
