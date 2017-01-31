@@ -17,5 +17,5 @@ spec:
           imagePullPolicy: Always
           env:
           - name: SPARK_MASTER
-            value: "spark://zytest-spark-master:7077"
+            value: "spark://spark-master:7077"
 

@@ -49,6 +49,7 @@ mkdir -p build/application
 
 FN=spark-application-controller.yaml
 sed "s/spark-application/${PREFIX}-spark-application/" ./${FN} \
+| sed "s/spark-master/${PREFIX}-spark-master/" ./${FN} \
 | sed "s/bitsdock\/sparkdbtest/${APP_IMAGE_REPO}\/${APP_IMAGE_NAME}/" \
 | sed "s/latest/${APP_IMAGE_VERSION}/" \
 > build/application/$FN
