@@ -16,6 +16,8 @@ spec:
           image: navicore/spark:1.6.2a
           imagePullPolicy: Always
           env:
+          - name: SPARK_WORKER_OPTS
+            value: "-Dspark.worker.cleanup.enabled=true -Dspark.worker.cleanup.appDataTtl=172800"
           - name: SPARK_WORKER_UI_PORT
             value: "8082"
           - name: SPARK_EXECUTOR_MEMORY
