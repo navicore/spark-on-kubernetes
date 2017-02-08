@@ -19,7 +19,7 @@ spec:
           - name: SPARK_WORKER_UI_PORT
             value: "8082"
           - name: SPARK_EXECUTOR_MEMORY
-            value: "1g"
+            value: "4g"
           - name: SPARK_SERVICE_NAME
             value: "spark-master"
           command: ["/start-worker"]
@@ -28,3 +28,12 @@ spec:
           resources:
             requests:
               cpu: 100m
+          volumeMounts:
+            - mountPath: /opt/spark/work/
+              name: work
+      volumes:
+        - name: work
+          hostPath:
+            # directory location on host
+            path: /mnt/spark-worker
+
