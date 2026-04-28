@@ -1,3 +1,8 @@
+<!-- ghmig:moved -->
+> **This repository has moved to [https://git.navicore.tech/navicore/spark-on-kubernetes](https://git.navicore.tech/navicore/spark-on-kubernetes).**
+>
+> The GitHub copy is archived and no longer maintained.
+
 # Spark on Kubernetes
 
 A Kubernetes deployment of a stand-alone [Apache Spark](http://spark.apache.org/) cluster. 
@@ -96,4 +101,3 @@ PREFIX="my-fav-cluster" ./gen_new_cluster.sEFIX="my" ./gen_new_cluster.sh
 ```
 
 Then, `cd build`, edit the files to adjust replica counts, ports, memory, etc..., and deploy `kubectl create -f .`.
-
